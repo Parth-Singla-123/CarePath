@@ -9,7 +9,7 @@ export async function POST(request) {
         .from('diseases')
         .select('*')
         .eq('disease_name', disease_name);
-        const detail = result.rows;
+        const detail = result;
 
         if(detail.length>0) {
             return NextResponse.json({success:true,data:detail});

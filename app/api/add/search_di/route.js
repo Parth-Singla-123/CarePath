@@ -13,7 +13,7 @@ export async function POST(request){
             .from('diseases')
             .select('disease_name')
             .ilike('disease_name', `${str}%`);
-    const items = result.rows;
+    const items = result;
 
     if (error) {
         console.error("Database Error:", error.message);
