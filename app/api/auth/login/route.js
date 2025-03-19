@@ -6,10 +6,21 @@ export async function POST(request) {
     const {email, password} = await request.json();
     console.log("recieved login request",email);
     try{
-        const result = await db.query("SELECT * FROM user_details WHERE user_email=$1",[email]);
-        const creds = result.rows[0];
-        console.log(creds);
-        if(password===creds.user_password) return NextResponse.json({success:true,data:creds});
+        const { data: user, error } = await supabase
+            .from('user_details')
+            .select('*')
+            .eq('user_email', email)
+            .single();
+            
+        if(password===creds.user_password) return NextResponse.json({
+                success: true,
+                data: {
+                    id: user.user_id,
+                    name: user.user_name,
+                    email: user.user_email
+                }
+            });
+
         else return NextResponse.json({success:false,message:"Password is incorrect... Try Again!"});
     }
     catch(error) {
