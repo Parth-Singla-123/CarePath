@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import db from "@/utils/postgres";
 import { supabase } from "@/app/lib/supabase";
 
 export async function POST(request) {

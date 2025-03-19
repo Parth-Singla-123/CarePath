@@ -1,5 +1,5 @@
 "use server";
-import { supabase } from "@/lib/supabase"; // Supabase client
+import { supabase } from "@/app/lib/supabase"; // Supabase client
 import { NextResponse } from "next/server";
 import { v1 as uuidv1 } from 'uuid';
 

@@ -1,6 +1,7 @@
 "use server"
 import db from "@/utils/postgres";
 import { NextResponse } from "next/server";
+import { supabase } from "@/app/lib/supabase";
 
 export async function POST(request) {
     const {email, password} = await request.json();
@@ -11,7 +12,7 @@ export async function POST(request) {
             .select('*')
             .eq('user_email', email)
             .single();
-            
+
         if(password===creds.user_password) return NextResponse.json({
                 success: true,
                 data: {
