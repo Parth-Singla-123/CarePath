@@ -2,25 +2,30 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/app/lib/supabase";
 
 export async function POST(request) {
-    const {disease_name} = await request.json();
-    console.log("Received disease_name in API:", disease_name);
-    try{
-        const { result, error } = await supabase
-        .from('diseases')
-        .select('*')
-        .eq('disease_name', disease_name);
-        const detail = result;
+    try {
+        const { disease_name } = await request.json();
+        console.log("Received disease_name in API:", disease_name);
 
-        if(detail.length>0) {
-            return NextResponse.json({success:true,data:detail});
+        const { data, error } = await supabase
+            .from('diseases')
+            .select('*')
+            .eq('disease_name', disease_name);
+
+        if (error) {
+            console.error("Supabase error:", error.message);
+            return NextResponse.json({ success: false, message: 'Database error' });
         }
-        else{
+
+        if (data && data.length > 0) {
+            console.log("Data found:", data);
+            return NextResponse.json({ success: true, data });
+        } else {
+            console.log("No data matched.");
             return NextResponse.json({ success: false, message: 'Data not found' });
         }
-    }
-    catch{
-        console.log("Error querying database:", error);
+
+    } catch (err) {
+        console.error("Internal server error:", err);
         return NextResponse.json({ success: false, message: 'Internal server error' });
     }
-    
 }

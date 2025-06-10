@@ -1,7 +1,6 @@
 "use client"
 import React from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { redirect } from 'next/navigation';
 import { useFormState, useFormStatus } from 'react-dom'
 import { login } from '../actions/auth';
 

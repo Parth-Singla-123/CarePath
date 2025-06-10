@@ -93,7 +93,7 @@ export async function login(state,formData) {
     console.log("error registering user",error);
   }
   if(result.success) {
-    const user = {id:result.data.user_id , name:result.data.user_name}
+    const user = {id:result.data.id , name:result.data.name}
     await createSession(user);
     permanentRedirect(`/`);
   }

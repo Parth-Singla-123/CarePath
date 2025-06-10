@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import nav from "./nav";
 import { deleteSession } from "@/app/lib/session";
 import { redirect } from "next/navigation";
+import { HiMenu, HiX } from "react-icons/hi";
 
 async function handleSubmit() {
   "use server"
@@ -14,7 +14,7 @@ async function handleSubmit() {
 function Navbar(props) {
 
   return (
-    <div className="flex-row flex bg-green-950 justify-between text-base xl:text-lg p-1 sticky">
+    <div className="flex-row flex bg-green-950 justify-between text-sm lg:text-base xl:text-lg p-1 sticky">
       <div className="logo mx-12">
         <Image src="/Assets/images/CarePath Logo.svg" alt="logo" width={200} height={200} />
       </div>

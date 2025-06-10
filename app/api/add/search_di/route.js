@@ -4,26 +4,26 @@ import { supabase } from "@/app/lib/supabase";
 
 export async function POST(request){
     const { di } = await request.json();
+    console.log("Received input:", di);
 
-        // Capitalize the search term
-        const str = _.capitalize(di);
+    const str = _.capitalize(di);
+    console.log("Capitalized:", str);
 
-        // Query Supabase database
-        const { result, error } = await supabase
-            .from('diseases')
-            .select('disease_name')
-            .ilike('disease_name', `${str}%`);
-    const items = result;
+    const { data, error } = await supabase
+        .from('diseases')
+        .select('disease_name')
+        .ilike('disease_name', `${str}%`);
+
+    console.log("disease is:", data);
 
     if (error) {
         console.error("Database Error:", error.message);
         return NextResponse.json({ success: false, message: 'Database error' });
     }
 
-    if(items) {
-        return NextResponse.json({success:true,data:items});
-    }
-    else{
-        return NextResponse.json({ success: false, message: 'User not found' });
+    if(data?.length) {
+        return NextResponse.json({ success: true, data });
+    } else {
+        return NextResponse.json({ success: false, message: 'No match found' });
     }
 }
