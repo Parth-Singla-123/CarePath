@@ -34,20 +34,19 @@ function Special() {
         }, 75);
     }
 
-
     return (
-        <div className="py-24 px-14 bg-green-50 rounded-[70px] h-4/5">            
-            <div className="text-black flex flex-row space-x-20">
-                <div className="w-3/5 flex flex-col my-auto mx-auto space-y-6 text-4xl font-semibold text-teal-600 font-sans">
-                    <h5 className="text-base font-medium mb-12">FEATURES SPECIALITIES</h5>
-                    <Link href="#" onMouseOver={handleHover} name="" id="0" className={isHovered[0] ? 'underline scale-105 text-teal-700 transition-transform duration-200' : ''}>Virtual Professionals Consultation</Link>
-                    <Link href="#" onMouseOver={handleHover} name="" id="1" className={isHovered[1] ? 'underline scale-105 text-teal-700 transition-transform duration-200' : ''}>Health Records Manage</Link>
-                    <Link href="#" onMouseOver={handleHover} name="" id="2" className={isHovered[2] ? 'underline scale-105 text-teal-700 transition-transform duration-200' : ''}>Virtual Prescription</Link>
-                    <Link href="/Search" onMouseOver={handleHover} name="" id="3" className={isHovered[3] ? 'underline scale-105 text-teal-700 transition-transform duration-200' : ''}>Know More about Diseases</Link>
+        <div className="py-16 px-4 sm:px-8 md:px-14 bg-green-50 rounded-3xl sm:rounded-[70px]">
+            <div className="text-black flex flex-col lg:flex-row lg:space-x-20 space-y-12 lg:space-y-0">
+                <div className="w-full lg:w-3/5 flex flex-col my-auto mx-auto space-y-6 text-2xl sm:text-3xl lg:text-4xl font-semibold text-teal-600 font-sans text-center lg:text-left">
+                    <h5 className="text-sm sm:text-base font-medium mb-4 sm:mb-8">FEATURES SPECIALITIES</h5>
+                    <Link href="#" onMouseOver={handleHover} id="0" className={isHovered[0] ? 'underline scale-105 text-teal-700 transition-transform duration-200' : ''}>Virtual Professionals Consultation</Link>
+                    <Link href="#" onMouseOver={handleHover} id="1" className={isHovered[1] ? 'underline scale-105 text-teal-700 transition-transform duration-200' : ''}>Health Records Manage</Link>
+                    <Link href="#" onMouseOver={handleHover} id="2" className={isHovered[2] ? 'underline scale-105 text-teal-700 transition-transform duration-200' : ''}>Virtual Prescription</Link>
+                    <Link href="/Search" onMouseOver={handleHover} id="3" className={isHovered[3] ? 'underline scale-105 text-teal-700 transition-transform duration-200' : ''}>Know More about Diseases</Link>
                 </div>
-                <div className="w-2/5 flex flex-col space-y-8">
-                    <Image src={data.img} alt="consulation" width={325} height={400} className="mx-auto rounded-lg shadow-sm shadow-green-950"/>
-                    <p className="w-[325px] mx-auto text-[17px] text-gray-600 font-medium font-serif">{data.info}</p>
+                <div className="w-full lg:w-2/5 flex flex-col space-y-6 items-center">
+                    <Image src={data.img} alt="consulation" width={325} height={400} className="mx-auto rounded-lg shadow-lg shadow-green-950"/>
+                    <p className="w-full max-w-[325px] mx-auto text-[15px] sm:text-[17px] text-green-900 font-medium font-sans text-center lg:text-left">{data.info}</p>
                 </div>
             </div>
         </div>

@@ -2,49 +2,94 @@
 
 import React from "react";
 import Link from "next/link";
-
 import Image from "next/image";
+import { motion } from "framer-motion";
 
-function content() {
-    return (
-        <div className=" font-serif py-10 rounded-[50px] bg-gradient-to-bl from-green-50 via-green-200 to-green-50 mb-32">
-            <div className="flex flex-row mx-auto place-content-center space-x-16 py-8 mb-10">
-                <div className="text-black flex flex-col w-1/3 space-y-5 my-auto">
-                    <h1 className="text-4xl font-bold">Healing Starts Here</h1>
-                    <div>
-                        <h2 className="text-xl font-bold">The right answers the first time</h2>
-                        <p className="text-lg font-medium">Effective treatment depends on getting the right diagnosis. Our experts diagnose and treat the toughest medical challenges.</p>
-                    </div>
-                    <div>
-                        <h2 className="text-xl font-bold">One of the Top-ranked</h2>
-                        <p className="text-lg font-medium">CarePath has more No. 1 rankings than any other hospital in the nation according to India News & Times</p>
-                    </div>
-                    <Link href="/About" className="text-xl rounded-full p-2 text-green-600 w-32 border-green-600 border-2 text-center hover:underline underline-offset-2">Learn more</Link>
-                </div>
-                <div className="w-2/5 mx-auto">
-                    <Image src="/Assets/images/istockphoto-1263873023-612x612.jpg" alt="doctor" width={420} height={1500} className="rounded-3xl mx-auto shadow-md shadow-green-950" />
-                </div>
-            </div>
-
-            <div className="h-[0.5px] bg-[#09470870] my-6 w-2/3 mx-auto"></div>
-
-            <div className="flex flex-row-reverse mx-auto place-content-center -space-x-20 py-8 mt-10">
-                <div className="text-black flex flex-col w-1/3 space-y-5 my-auto pl-10">
-                    <h1 className="text-4xl font-bold">World-class care for global patients</h1>
-                    <div>
-                        <p className="text-lg font-medium">We make it easy for patients around the world to get care from CarePath.</p>
-                    </div>
-                    <Link href="#" className="text-xl font-medium rounded-full p-2 text-green-700 w-64 border-green-700 border-2 text-center hover:underline underline-offset-2">Book Appointment Now</Link>
-                </div>
-                <div className="w-2/5">
-                    <Image src="/Assets/images/nursecare.jpg" alt="doctor" width={420} height={1500} className="rounded-3xl shadow-md shadow-yellow-950" />
-                </div>
-            </div>
-
+function Content() {
+  return (
+    <div className="font-serif py-10 rounded-[50px] bg-gradient-to-br from-green-50 via-green-100 to-green-50 mb-32">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 px-4 sm:px-6 md:px-10 lg:px-16 py-10"
+      >
+        <div className="text-black flex flex-col lg:w-1/2 w-full space-y-6 px-2 sm:px-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-green-900 lg:text-left">Healing Starts Here</h1>
+          <div className="space-y-2">
+            <h2 className="text-lg sm:text-xl font-bold text-green-800 lg:text-left flex items-center gap-2">
+              <span>🩺</span> The right answers the first time
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700 lg:text-left">Effective treatment depends on getting the right diagnosis. Our experts diagnose and treat the toughest medical challenges.</p>
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-lg sm:text-xl font-bold text-green-800 lg:text-left flex items-center gap-2">
+              <span>🏆</span> One of the Top-ranked
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700 lg:text-left">CarePath has more No. 1 rankings than any other hospital in the nation according to India News & Times.</p>
+          </div>
+          <div className="flex justify-center lg:justify-start">
+            <Link href="/About" className="text-sm sm:text-base md:text-lg rounded-full py-2 px-6 text-green-800 border-green-800 border-2 hover:bg-green-200 transition-all w-fit">
+              Learn more
+            </Link>
+          </div>
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="lg:w-2/5 w-5/6 max-w-sm md:max-w-md"
+        >
+          <Image
+            src="/Assets/images/istockphoto-1263873023-612x612.jpg"
+            alt="doctor"
+            width={400}
+            height={400}
+            className="rounded-3xl shadow-xl shadow-green-900 w-full h-auto object-cover"
+          />
+        </motion.div>
+      </motion.div>
 
-    )
+      <div className="h-[1px] bg-green-800/20 my-10 w-4/5 mx-auto"></div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="flex flex-col-reverse lg:flex-row-reverse items-center justify-center gap-12 px-4 sm:px-6 md:px-10 lg:px-16 py-10"
+      >
+        <div className="text-black flex flex-col lg:w-1/2 w-full space-y-6 px-2 sm:px-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-green-900 lg:text-left">World-class care for global patients</h1>
+          <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700 lg:text-left">We make it easy for patients around the world to get care from CarePath.</p>
+          <div className="flex justify-center lg:justify-start">
+            <Link href="#" className="text-sm sm:text-base md:text-lg rounded-full py-2 px-6 text-green-900 border-green-900 border-2 hover:bg-green-200 transition-all w-fit">
+              Book Appointment Now
+            </Link>
+          </div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="lg:w-2/5 w-5/6 max-w-sm md:max-w-md"
+        >
+          <Image
+            src="/Assets/images/nursecare.jpg"
+            alt="nurse care"
+            width={400}
+            height={400}
+            className="rounded-3xl shadow-xl shadow-green-900 w-full h-auto object-cover"
+          />
+        </motion.div>
+      </motion.div>
+    </div>
+  );
 }
 
-export default content;
+export default Content;

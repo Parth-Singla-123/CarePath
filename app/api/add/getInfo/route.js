@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { NextResponse } from "next/server";
 import { supabase } from "@/app/lib/supabase";
 

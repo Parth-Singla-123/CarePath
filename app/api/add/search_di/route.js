@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { NextResponse } from "next/server";
 import _ from "lodash";
 import { supabase } from "@/app/lib/supabase";
@@ -12,7 +14,7 @@ export async function POST(request){
     const { data, error } = await supabase
         .from('diseases')
         .select('disease_name')
-        .ilike('disease_name', `${str}%`);
+        .ilike('disease_name', `${str}%`).limit(5);
 
     console.log("disease is:", data);
 

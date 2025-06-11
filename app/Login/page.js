@@ -19,7 +19,7 @@ export default function AuthPage() {
             <input
               type="email" name="email"
               placeholder="Email"
-              className="w-full px-4 py-2 mb-4 bg-white bg-opacity-40 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 mb-4 placeholder:text-gray-600 bg-white bg-opacity-40 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
 
             {state?.errors?.email &&
@@ -30,7 +30,7 @@ export default function AuthPage() {
             <input
               type="password" name="password"
               placeholder="Password"
-              className="w-full px-4 py-2 mb-4 bg-white bg-opacity-40 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 mb-4 placeholder:text-gray-600 bg-white bg-opacity-40 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
 
             {state?.errors?.password && (
@@ -61,7 +61,7 @@ export default function AuthPage() {
             Log in with Google
           </button>
 
-          <p className="mt-2 text-sm text-gray-300">
+          <p className="mt-2 text-sm text-gray-900">
             Don’t have an account? <a href="#" className="text-orange-400 font-medium hover:underline">Sign up</a>
           </p>
 

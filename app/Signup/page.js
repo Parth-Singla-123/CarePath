@@ -11,7 +11,7 @@ export default function SignUpPage() {
 
       <div className="absolute inset-0 bg-gradient-to-t from-black via-[#0128008a] via-black via-transparent via-black via-[#0128008a] to-black opacity-90 z-0"></div>
 
-      <div className="relative z-10 w-full max-w-sm sm:mr-10 sm:ml-auto mx-auto bg-white bg-opacity-20 backdrop-blur-md rounded-xl shadow-lg p-6 my-auto flex flex-col justify-center items-center">
+      <div className="relative z-10 w-full max-w-sm sm:mr-10 sm:ml-auto mx-auto bg-green-100 bg-opacity-20 backdrop-blur-md rounded-xl shadow-lg p-6 my-auto flex flex-col justify-center items-center">
         <h2 className="text-3xl font-semibold text-white mb-4">Create an Account</h2>
 
         <form action={action}>
@@ -19,7 +19,7 @@ export default function SignUpPage() {
           <input
             type="text" name="name" id="name"
             placeholder="Full Name"
-            className="w-full px-4 py-2 mb-4 bg-white bg-opacity-40 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 mb-4 placeholder:text-gray-600 bg-white bg-opacity-40 border border-gray-400 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
           {state?.errors?.name &&
@@ -31,7 +31,7 @@ export default function SignUpPage() {
           <input
             type="email" name="email" id="email"
             placeholder="Email"
-            className="w-full px-4 py-2 mb-4 bg-white bg-opacity-40 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 mb-4 placeholder:text-gray-600 bg-white bg-opacity-40 border border-gray-400 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
           {state?.errors?.email &&
@@ -42,7 +42,7 @@ export default function SignUpPage() {
           <input
             type="password" name="password" id="password"
             placeholder="Password"
-            className="w-full px-4 py-2 mb-4 bg-white bg-opacity-40 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 mb-4 placeholder:text-gray-600 bg-white bg-opacity-40 border border-gray-400 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
           {state?.errors?.password && (

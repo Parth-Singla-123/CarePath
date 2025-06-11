@@ -15,7 +15,7 @@ function Homeimage() {
     }
 
     return (
-        <div className="relative w-full h-[80vh] text-yellow-50 overflow-hidden">
+        <div className="relative w-full h-[63vh] md:h-[83vh] text-yellow-50 overflow-hidden">
             <video
                 className="absolute top-0 left-0 w-full h-full object-cover brightness-50 z-0"
                 loop
@@ -29,10 +29,10 @@ function Homeimage() {
             </video>
 
             
-            <div className="relative z-10 flex flex-col justify-between h-full px-4 md:px-12 py-16 space-y-5">
+            <div className="relative z-10 flex flex-col justify-between h-full px-6 md:px-12 py-16 space-y-5">
                 
-                <div className="mt-auto space-y-3 max-w-full md:max-w-[65%]">
-                    <h1 className="text-3xl md:text-5xl font-semibold font-serif leading-relaxed tracking-wide">
+                <div className="mt-auto space-y-3 max-w-[60vh] md:max-w-[75%]">
+                    <h1 className="text-2xl md:text-4xl lg:text-[40px] font-semibold font-serif leading-relaxed tracking-wide">
                         Empowering Health Through{" "}
                         <br className="hidden md:block" />
                         Technology
