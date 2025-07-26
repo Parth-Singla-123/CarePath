@@ -1,31 +1,21 @@
-export const revalidate = 60;
-
 import { NextResponse } from "next/server";
-import _ from "lodash";
 import { supabase } from "@/app/lib/supabase";
 
-export async function POST(request){
-    const { di } = await request.json();
-    console.log("Received input:", di);
+export const revalidate = 3600;
+export const runtime = "edge"; // optional
 
-    const str = _.capitalize(di);
-    console.log("Capitalized:", str);
-
+export async function GET() {
+  try {
     const { data, error } = await supabase
-        .from('diseases')
-        .select('disease_name')
-        .ilike('disease_name', `${str}%`).limit(5);
+      .from("diseases")
+      .select("disease_name")
+      .order("disease_name", { ascending: true });
 
-    console.log("disease is:", data);
+    if (error) throw error;
 
-    if (error) {
-        console.error("Database Error:", error.message);
-        return NextResponse.json({ success: false, message: 'Database error' });
-    }
-
-    if(data?.length) {
-        return NextResponse.json({ success: true, data });
-    } else {
-        return NextResponse.json({ success: false, message: 'No match found' });
-    }
+    return NextResponse.json({ success: true, data });
+  } catch (err) {
+    console.error("ERROR: ", err.message);
+    return NextResponse.json({ success: false, message: "Failed to fetch diseases" });
+  }
 }

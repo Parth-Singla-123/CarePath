@@ -9,6 +9,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', 'Inter', 'sans-serif'],
+        serif: ['var(--font-lora)', 'Lora', 'serif'],
+        brand: ['var(--font-alegreya)', 'Alegreya', 'serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -16,10 +21,10 @@ module.exports = {
       keyframes:{
         change1:{
           '0%':{opacity:1},
-          '100%':{opacity:0,transform:'translate(0px,-32px)'},
+          '100%':{opacity:0,transform:'translate(0px,-34px)'},
         },
         change2:{
-          '0%':{opacity:0,transform:'translate(0px,-32px)'},
+          '0%':{opacity:0,transform:'translate(0px,-34px)'},
           '100%':{opacity:1,transform:'translate(0px,0px)'}
         },
         move1:{

@@ -2,6 +2,20 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
+import { Inter, Lora, Alegreya } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-serif',
+});
+
+
+const alegreya = Alegreya({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-alegreya' });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +37,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`antialiased`}
+        className={`antialiased ${inter.variable} ${lora.variable} ${alegreya.variable}`}
       >
         <Nav />
         {children}

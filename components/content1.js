@@ -1,95 +1,118 @@
-"use client"
+"use client";
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { FaHospitalAlt, FaUserMd, FaNotesMedical, FaHeart } from "react-icons/fa";
 
-function Content() {
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+export default function OneMedicalInspiredContent() {
+  const features = [
+    {
+      icon: <FaHospitalAlt className="text-green-600 w-10 h-10" />,
+      title: "Expert Medical Team",
+      description:
+        "Our team includes board-certified specialists delivering personalized care with compassion.",
+    },
+    {
+      icon: <FaUserMd className="text-green-600 w-10 h-10" />,
+      title: "Virtual Consultations",
+      description:
+        "Access healthcare from your home with our secure, high-quality telemedicine platform.",
+    },
+    {
+      icon: <FaNotesMedical className="text-green-600 w-10 h-10" />,
+      title: "Patient Records Management",
+      description:
+        "Manage your health information securely with easy-to-use patient portals.",
+    },
+    {
+      icon: <FaHeart className="text-green-600 w-10 h-10" />,
+      title: "Comprehensive Wellness Programs",
+      description:
+        "Prevention, diagnosis, and treatment integrated for lifelong healthy living.",
+    },
+  ];
+
   return (
-    <div className="font-serif py-10 rounded-[50px] bg-gradient-to-br from-green-50 via-green-100 to-green-50 mb-32">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 px-4 sm:px-6 md:px-10 lg:px-16 py-10"
+    <section className="relative bg-gradient-to-br from-green-50 via-green-100 to-white rounded-[50px] max-w-7xl mx-auto py-16 px-6 sm:px-12 md:px-16 font-serif text-green-900">
+      {/* Background subtle shapes */}
+      <svg
+        aria-hidden="true"
+        className="hidden md:block absolute top-[-80px] left-[-40px] w-48 h-48 opacity-20 text-green-300"
+        fill="currentColor"
+        viewBox="0 0 200 200"
       >
-        <div className="text-black flex flex-col lg:w-1/2 w-full space-y-6 px-2 sm:px-4">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-green-900 lg:text-left">Healing Starts Here</h1>
-          <div className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-bold text-green-800 lg:text-left flex items-center gap-2">
-              <span>🩺</span> The right answers the first time
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700 lg:text-left">Effective treatment depends on getting the right diagnosis. Our experts diagnose and treat the toughest medical challenges.</p>
-          </div>
-          <div className="space-y-2">
-            <h2 className="text-lg sm:text-xl font-bold text-green-800 lg:text-left flex items-center gap-2">
-              <span>🏆</span> One of the Top-ranked
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700 lg:text-left">CarePath has more No. 1 rankings than any other hospital in the nation according to India News & Times.</p>
-          </div>
-          <div className="flex justify-center lg:justify-start">
-            <Link href="/About" className="text-sm sm:text-base md:text-lg rounded-full py-2 px-6 text-green-800 border-green-800 border-2 hover:bg-green-200 transition-all w-fit">
-              Learn more
-            </Link>
-          </div>
-        </div>
+        <circle cx="100" cy="100" r="100" />
+      </svg>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="lg:w-2/5 w-5/6 max-w-sm md:max-w-md"
+      <motion.div
+        className="max-w-3xl mx-auto text-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
+        <motion.h1
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6"
+          variants={itemVariants}
         >
-          <Image
-            src="/Assets/images/istockphoto-1263873023-612x612.jpg"
-            alt="doctor"
-            width={400}
-            height={400}
-            className="rounded-3xl shadow-xl shadow-green-900 w-full h-auto object-cover"
-          />
+          Healing Starts Here
+        </motion.h1>
+
+        <motion.p
+          className="text-lg sm:text-xl max-w-xl mx-auto mb-12 font-medium text-green-800"
+          variants={itemVariants}
+        >
+          Experience personalized care tailored to you. Trusted expertise, modern technology, and a commitment to your wellness every step of the way.
+        </motion.p>
+
+        <motion.div className="flex justify-center gap-6 mb-16" variants={itemVariants}>
+          <Link
+            href="/About"
+            className="px-8 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition"
+          >
+            Learn More
+          </Link>
+          <Link
+            href="/BookAppointment"
+            className="px-8 py-3 border-2 border-green-600 text-green-600 font-semibold rounded-full hover:bg-green-100 transition"
+          >
+            Book Appointment
+          </Link>
         </motion.div>
       </motion.div>
 
-      <div className="h-[1px] bg-green-800/20 my-10 w-4/5 mx-auto"></div>
-
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 max-w-6xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
-        className="flex flex-col-reverse lg:flex-row-reverse items-center justify-center gap-12 px-4 sm:px-6 md:px-10 lg:px-16 py-10"
+        variants={containerVariants}
       >
-        <div className="text-black flex flex-col lg:w-1/2 w-full space-y-6 px-2 sm:px-4">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-green-900 lg:text-left">World-class care for global patients</h1>
-          <p className="text-sm sm:text-base md:text-lg font-medium text-gray-700 lg:text-left">We make it easy for patients around the world to get care from CarePath.</p>
-          <div className="flex justify-center lg:justify-start">
-            <Link href="#" className="text-sm sm:text-base md:text-lg rounded-full py-2 px-6 text-green-900 border-green-900 border-2 hover:bg-green-200 transition-all w-fit">
-              Book Appointment Now
-            </Link>
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="lg:w-2/5 w-5/6 max-w-sm md:max-w-md"
-        >
-          <Image
-            src="/Assets/images/nursecare.jpg"
-            alt="nurse care"
-            width={400}
-            height={400}
-            className="rounded-3xl shadow-xl shadow-green-900 w-full h-auto object-cover"
-          />
-        </motion.div>
+        {features.map(({ icon, title, description }, idx) => (
+          <motion.article
+            key={idx}
+            className="flex flex-col items-center text-center space-y-4 px-4 sm:px-2"
+            variants={itemVariants}
+          >
+            <div className="p-4 bg-green-100 rounded-full">{icon}</div>
+            <h3 className="text-xl font-semibold">{title}</h3>
+            <p className="text-green-700">{description}</p>
+          </motion.article>
+        ))}
       </motion.div>
-    </div>
+    </section>
   );
 }
-
-export default Content;

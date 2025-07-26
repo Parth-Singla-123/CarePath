@@ -1,24 +1,29 @@
 const data = [
     {
-        id:1,
-        img:"/Assets/images/consulation.jpg",
-        info: 'CarePath connects you with expert healthcare professionals for personalized advice and treatment—anytime, anywhere!. Wherever you want.'
-    }, 
-    {
-        id:2,
-        img:"/Assets/images/Medical-Record-Management-e1684183750201.webp",
-        info:'CarePath securely stores and organizes your health records, allowing you to access, update, and share them anytime with ease and privacy.'
+      id: 1,
+      title: "Virtual Professionals Consultation",
+      img: "/Assets/images/consulation.jpg",
+      info: "Connect with licensed healthcare professionals for secure and personalized virtual consultations accessible anytime, from anywhere."
     },
     {
-        id:3,
-        img:"/Assets/images/prescription.webp",
-        info:'CarePath offers virtual prescriptions from certified experts, delivering medications to you quickly and securely—no need to leave home.'
+      id: 2,
+      title: "Secure Health Records",
+      img: "/Assets/images/Medical-Record-Management-e1684183750201.webp",
+      info: "Safely store, manage, and share your medical records with end-to-end encryption and easy access across devices, ensuring complete privacy and control."
     },
     {
-        id:4,
-        img:"/Assets/images/diseases.jpg",
-        info:'CarePath provides reliable information on diseases, including symptoms, treatments, and prevention, empowering you for better health management.'
+      id: 3,
+      title: "E-Prescriptions from Doctors",
+      img: "/Assets/images/prescription.webp",
+      info: "Receive valid digital prescriptions from verified practitioners and get your medications delivered promptly and securely without visiting a clinic."
+    },
+    {
+      id: 4,
+      title: "Know More about Diseases",
+      img: "/Assets/images/diseases.jpg",
+      info: "Access a trusted database of medical conditions with detailed insights into symptoms, treatments, and preventive care to support informed health decisions."
     }
-]
-
-export default data;
+  ];
+  
+  export default data;
+  

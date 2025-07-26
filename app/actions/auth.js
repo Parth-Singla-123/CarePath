@@ -4,6 +4,9 @@ import { LoginFormSchema } from "../lib/definations";
 import { createSession } from "../lib/session";
 import { NextResponse } from "next/server";
 import { permanentRedirect } from "next/navigation";
+import { deleteSession } from "@/app/lib/session";
+import { redirect } from "next/navigation";
+
 
 export async function signup(state, formData) {
   // Validate form fields
@@ -59,6 +62,8 @@ export async function signup(state, formData) {
 
 
 
+
+
 export async function login(state,formData) {
 
   const validatedFields = LoginFormSchema.safeParse({
@@ -102,3 +107,12 @@ export async function login(state,formData) {
     error:{},
   };
 }
+
+
+export async function handleLogout() {
+  await deleteSession();
+  redirect('/Login');
+}
+
+
+

@@ -1,112 +1,156 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { HiSearch } from "react-icons/hi";
 
 function Search1() {
   const router = useRouter();
-  const [di, setDi] = useState("");
-  const [items, setItems] = useState([]);
-  const [isEmpty, setEmpty] = useState(true);
+  const [query, setQuery] = useState("");
+  const [allDiseases, setAllDiseases] = useState([]); // Should be fetched as you have it
+  const [filtered, setFiltered] = useState([]);
+  const [isEmpty, setIsEmpty] = useState(true);
 
+  // Function to handle clicking on a suggested disease name
   function handleClick(event) {
-    setDi(event.target.name);
-    setItems([]);
+    const diseaseName = event.target.name;
+    setQuery(diseaseName);
+    setFiltered([]);
+    router.push(`/Search?disease=${encodeURIComponent(diseaseName)}`);
   }
 
+  // Handle input change and filter disease list
   function handleSearch(event) {
     const val = event.target.value;
-    setEmpty(val === "");
-    setDi(val);
+    setQuery(val);
+    const isEmptyValue = val.trim() === "";
+    setIsEmpty(isEmptyValue);
+
+    if (!isEmptyValue && allDiseases.length > 0) {
+      const matches = allDiseases.filter((d) =>
+        d.disease_name.toLowerCase().includes(val.toLowerCase()));
+      
+      const prioritized = [
+        ...matches.filter((d) => d.disease_name.toLowerCase().startsWith(val.toLowerCase())),
+        ...matches.filter((d) => !d.disease_name.toLowerCase().startsWith(val.toLowerCase())),
+      ];
+
+      setFiltered(prioritized.slice(0, 5));
+      
+    } else {
+      setFiltered([]);
+    }
   }
 
+  // On input submit, route to the search page with query
   function handleSubmit(e) {
     e.preventDefault();
-    router.push(`/Search?disease=${di}`);
+    if (query.trim()) {
+      router.push(`/Search?disease=${encodeURIComponent(query)}`);
+    }
   }
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchDiseases() {
       try {
-        const response = await fetch('api/add/search_di', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ di }),
+        const res = await fetch("/api/add/search_di", {
+          method: "GET",
+          cache:"force-cache"
         });
-        const result = await response.json();
-        if (result.success && Array.isArray(result.data)) setItems(result.data);
-        else setItems([]);
-      } catch {
-        console.log("cannot fetch data");
+        const result = await res.json();
+        console.log("data is",result.data);
+        if (result.success && Array.isArray(result.data)) {
+          setAllDiseases(result.data);
+        }
+        console.log("disease are", allDiseases);
+      } catch (err) {
+        console.error("Error fetching diseases:", err);
       }
     }
-    if (di) fetchData();
-  }, [di]);
+
+    fetchDiseases();
+  }, []);
 
   return (
-    <div className="px-4">
-      <div className="text-2xl sm:text-3xl md:text-4xl text-green-800 font-semibold text-center mx-auto font-serif my-10">
-        <h1>&#x275D; Know the disease, fight the cure! &#x275E;</h1>
-      </div>
-      <div className="flex flex-col lg:flex-row mt-10 mb-14 items-center lg:items-start justify-center lg:space-x-10 space-y-10 lg:space-y-0">
-        <div className="w-11/12 sm:w-4/5 md:w-3/5 lg:w-2/5">
-          <video
-            className="brightness-50 block rounded-3xl shadow-lg shadow-green-900 w-full h-auto"
-            loop autoPlay muted playsInline preload="auto"
-          >
-            <source src="/Assets/videos/66101-516544911_large.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+    <section className="bg-white min-h-[65vh] flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-12 gap-16 md:gap-32 font-sans">
+      {/* Left Content: Headline + Subtext + Icon */}
+      <div className="max-w-md md:max-w-lg text-gray-900 space-y-6">
+        <div className="flex items-center space-x-3 text-[#1D5C48]">
+          <HiSearch className="w-10 h-10" aria-hidden="true" />
+          <h1 className="text-4xl font-bold font-serif leading-tight">
+            Know the Disease. <br />
+            Find the Cure.
+          </h1>
         </div>
-        <div className="text-black flex flex-col space-y-5 w-11/12 sm:w-4/5 md:w-3/5 lg:w-[45%] relative">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800">Search diseases & conditions</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="relative w-full">
-              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-green-700">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6">
-                  <path d="M10,2a8,8,0,1,0,8,8A8.00917,8.00917,0,0,0,10,2ZM4,10a6,6,0,1,1,6,6A6.00657,6.00657,0,0,1,4,10Z"></path>
-                  <path d="M21.707,20.293,17.73816,16.3241a10.08573,10.08573,0,0,1-1.41406,1.41406L20.293,21.707A.99989.99989,0,0,0,21.707,20.293Z"></path>
-                </svg>
-              </div>
-              <input
-                type="search"
-                name="disease"
-                id="disease"
-                placeholder="Search"
-                onChange={handleSearch}
-                value={di}
-                autoComplete="off"
-                className={`text-base sm:text-lg md:text-xl border-gray-600 border-2 pl-12 pr-3 py-3 h-14 rounded-full w-full placeholder-gray-400 ${isEmpty ? "" : "ring-4 ring-green-600 border-green-700 ring-offset-[3px] outline-none transition-shadow duration-150 ease-in"}`}
-              />
-              {!isEmpty && (
-                <button
-                  type="submit"
-                  className="absolute right-0 top-0 h-full bg-blue-900 hover:bg-blue-800 text-white font-medium rounded-e-full ring-4 ring-green-600 ring-offset-[3px] text-base sm:text-lg px-6 sm:px-8 transition-colors duration-100 ease-in-out shadow-md active:shadow-lg active:bg-blue-700"
-                >
-                  Submit
-                </button>
-              )}
-            </div>
-          </form>
+        <p className="text-lg text-gray-700">
+          Discover reliable information on thousands of diseases and conditions — empowering your healthcare decisions.
+        </p>
+
+        <div className="hidden md:flex space-x-5 text-sm text-green-700 font-semibold">
+          <button className="bg-green-100 rounded-full px-4 py-2 hover:bg-green-200 transition" onClick={() => router.push('/Search?disease=Diabetes')}>Diabetes</button>
+          <button className="bg-green-100 rounded-full px-4 py-2 hover:bg-green-200 transition" onClick={() => router.push('/Search?disease=Hypertension')}>Hypertension</button>
+          <button className="bg-green-100 rounded-full px-4 py-2 hover:bg-green-200 transition" onClick={() => router.push('/Search?disease=Asthma')}>Asthma</button>
+          <button className="bg-green-100 rounded-full px-4 py-2 hover:bg-green-200 transition" onClick={() => router.push('/Search?disease=Arthritis')}>Arthritis</button>
+        </div>
+      </div>
+
+      {/* Right Content: Search Box */}
+      <div className="w-full max-w-xl relative">
+        {/* Added Search Label above input */}
+        <label
+          htmlFor="disease"
+          className="block font-semibold font-serif mb-4 ml-3 text-gray-900 text-xl"
+        >
+          Search Diseases & Conditions
+        </label>
+
+        <form onSubmit={handleSubmit} className="relative text-gray-900">
+          <input
+            id="disease"
+            name="disease"
+            type="search"
+            placeholder="Search diseases & conditions..."
+            className={`w-full border-2 rounded-full py-4 pl-16 pr-8 text-lg shadow-lg placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-green-400 ${
+              !isEmpty ? "border-green-600" : "border-gray-300"
+            } transition`}
+            value={query}
+            onChange={handleSearch}
+            autoComplete="off"
+            aria-label="Search diseases and conditions"
+          />
+          <HiSearch
+            className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-green-600 pointer-events-none"
+            aria-hidden="true"
+          />
           {!isEmpty && (
-            <div className="absolute top-[110%] left-0 w-3/5 bg-white rounded-md text-slate-700 border-[1.5px] border-gray-300 shadow-lg z-50">
-              <ul className="flex flex-col space-y-0.5 text-base sm:text-lg font-semibold p-2">
-                {items.map((item, idx) => (
-                  <button
-                    key={idx}
-                    className="py-2 px-3 hover:bg-green-50 rounded-md text-left transition-colors duration-150"
-                    onClick={handleClick}
-                    name={item.disease_name}
-                  >
-                    {item.disease_name}
-                  </button>
-                ))}
-              </ul>
-            </div>
+            <button
+              type="submit"
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-full shadow transition"
+            >
+              Search
+            </button>
           )}
-        </div>
+        </form>
+
+        {/* Suggestion dropdown */}
+        {!!filtered.length && (
+          <ul className="absolute top-full mt-3 w-11/12 bg-white rounded-lg shadow-lg max-h-60 overflow-auto z-50 border border-green-300">
+            {filtered.map((item, idx) => (
+              <li key={idx}>
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  name={item.disease_name}
+                  className="block w-full text-left px-5 py-3 hover:bg-green-100 transition text-gray-700 font-medium"
+                >
+                  {item.disease_name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-    </div>
+    </section>
   );
 }
 

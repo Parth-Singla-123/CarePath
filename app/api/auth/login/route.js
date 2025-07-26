@@ -5,19 +5,23 @@ import { supabase } from "@/app/lib/supabase";
 
 export async function POST(request) {
     const { email, password } = await request.json();
-    console.log("Received login request for:", email);
+    console.log("Received login request for:", email, password);
+
 
     try {
         const { data: user, error } = await supabase
             .from('user_details')
             .select('*')
             .eq('user_email', email)
-            .single(); // single() ensures you get one object or null
+            .single(); 
 
         if (error) {
-            console.error("Supabase query error:", error.message);
-            return NextResponse.json({ success: false, message: "Account not found" });
+            if (error.code === 'PGRST116') {
+                return NextResponse.json({ success: false, message: "User does not exist" });
+            }
+            return NextResponse.json({ success: false, message: "Database error: " + error.message });
         }
+
 
         if (!user) {
             return NextResponse.json({ success: false, message: "User does not exist" });
