@@ -6,7 +6,7 @@ export default async function nav() {
     const userDetails = userVerification();
     return (
         <div>
-            <Navbar isVerified={(await userDetails).verification} userName={(await userDetails).user}/>
+            <Navbar isVerified={(await userDetails).verification} userName={(await userDetails).user.name} userMail={(await userDetails).user.email}/>
         </div>
     )
 }

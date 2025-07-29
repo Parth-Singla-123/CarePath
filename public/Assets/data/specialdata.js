@@ -9,7 +9,7 @@ const data = [
       id: 2,
       title: "Secure Health Records",
       img: "/Assets/images/Medical-Record-Management-e1684183750201.webp",
-      info: "Safely store, manage, and share your medical records with end-to-end encryption and easy access across devices, ensuring complete privacy and control."
+      info: "Safely store, manage and share your medical records with end-to-end encryption and easy access across devices, ensuring privacy and control."
     },
     {
       id: 3,

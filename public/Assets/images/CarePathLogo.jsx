@@ -1,6 +1,6 @@
 import React from "react";
 
-const CarePathLogo = ({ width = 180, height = 50, className, style }) => {
+const CarePathLogo = ({ width = 180, height = 50, className, style , white}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,8 +13,8 @@ const CarePathLogo = ({ width = 180, height = 50, className, style }) => {
       aria-label="CarePath logo"
       preserveAspectRatio="xMidYMid meet"
     >
-      {/* 'CarePath' in dark green */}
-      <text
+      
+      {!white ? (<text
         x="0"
         y="60"
         fontFamily="Alegreya, serif"
@@ -23,7 +23,17 @@ const CarePathLogo = ({ width = 180, height = 50, className, style }) => {
         fill="#14532D"
       >
         CarePath
-      </text>
+      </text>) :
+      (<text
+        x="0"
+        y="60"
+        fontFamily="Alegreya, serif"
+        fontWeight="700"
+        fontSize="65"
+        fill="#ffffff"
+      >
+        CarePath
+      </text>)}
 
       {/* '+' sign in black, placed right and vertically aligned */}
       <text

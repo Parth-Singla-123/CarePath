@@ -32,7 +32,7 @@ function Care() {
     }
 
     return (
-        <div className="text-center font-sans my-12 sm:my-16 font-medium px-4">
+        <div className="text-center font-sans mt-12 mb-8 md:mb-12 sm:my-16 font-medium px-4">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-green-900 font-medium">Get Care Today For</h1>
             <div className="text-3xl sm:text-5xl md:text-5xl lg:text-[50px] text-teal-700 -mt-2 sm:-mt-4 pt-5">
                 <h1 className={isChange ? "animate-change1" : "animate-change2"}>{di}</h1>
@@ -42,7 +42,7 @@ function Care() {
                     Consult doctors for treatment
                 </Link>
                 <span className={`${isHovered ? "translate-x-1" : "-translate-x-1"} transition-all duration-500`}>
-                    <GoChevronRight className="text-green-800 text-base mt-2 ml-1" />
+                    <GoChevronRight className="text-green-800 text-sm md:text-base mt-1 md:mt-2 ml-1" />
                 </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-green-900 font-medium w-full sm:w-4/5 lg:w-3/5 mx-auto leading-snug sm:leading-[60px] lg:leading-[75px] mt-10">

@@ -67,5 +67,8 @@ export async function userVerification() {
     const session = (await cookies()).get('session')?.value;
     const payload = await decrypt(session);
     if(!payload?.user) return({verification:false,user:""});
-    else return ({verification:true,user:payload.user.name});
+    else {
+      console.log(payload.user.email);
+      return ({verification:true,user:payload.user});
+    }
 }

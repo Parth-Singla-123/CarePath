@@ -47,7 +47,7 @@ export async function signup(state, formData) {
     console.log("Error registering user", error);
   }
   if(result.success) {
-    const user = {id:result.data.id,name:result.data.name}
+    const user = {id:result.data.id,name:result.data.name, email:email}
     await createSession(user);
     permanentRedirect(`/`);
   }
@@ -98,7 +98,7 @@ export async function login(state,formData) {
     console.log("error registering user",error);
   }
   if(result.success) {
-    const user = {id:result.data.id , name:result.data.name}
+    const user = {id:result.data.id , name:result.data.name, email: email}
     await createSession(user);
     permanentRedirect(`/`);
   }

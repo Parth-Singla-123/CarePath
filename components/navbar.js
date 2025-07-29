@@ -2,16 +2,16 @@
 
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import { HiMenu, HiX } from 'react-icons/hi';
+import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi';
 import { usePathname } from 'next/navigation';
 import { handleLogout } from '@/app/actions/auth';
 import CarePathLogo from '@/public/Assets/images/CarePathLogo';
+import Image from 'next/image';
 
-// UserAvatar: user profile photo, or fallback with initial.
 function UserAvatar({ name, photoURL }) {
   if (photoURL) {
     return (
-      <img
+      <Image
         src={photoURL}
         alt={name}
         className="w-12 h-12 rounded-full object-cover border-2 border-[#1D5C48] shadow"
@@ -20,13 +20,13 @@ function UserAvatar({ name, photoURL }) {
   }
   const letter = (name?.[0] || '?').toUpperCase();
   return (
-    <div className="w-9 h-9 flex items-center justify-center rounded-full bg-black text-white text-xl font-bold shadow">
+    <div className="w-9 h-9 flex items-center justify-center rounded-full bg-black text-white text-xl font-extrabold border-2 border-black/80 shadow">
       {letter}
     </div>
   );
 }
 
-function Navbar({ isVerified, userName, photoURL }) {
+function Navbar({ isVerified, userName, photoURL, userMail }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Profile dropdown logic (desktop)
@@ -37,7 +37,16 @@ function Navbar({ isVerified, userName, photoURL }) {
     setProfileDropdown(true);
   }
   function delayedHideProfileDropdown() {
-    profileDropdownTimeout.current = setTimeout(() => setProfileDropdown(false), 130);
+    profileDropdownTimeout.current = setTimeout(() => setProfileDropdown(false), 120);
+  }
+
+  // Toggle on click or keyboard
+  function handleProfileTrigger(e) {
+    if (e.type === "click" || e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setProfileDropdown(d => !d);
+      clearTimeout(profileDropdownTimeout.current);
+    }
   }
 
   // Services dropdown logic (desktop)
@@ -48,7 +57,7 @@ function Navbar({ isVerified, userName, photoURL }) {
     setServicesDropdown(true);
   }
   function delayedHideServicesDropdown() {
-    servicesDropdownTimeout.current = setTimeout(() => setServicesDropdown(false), 130);
+    servicesDropdownTimeout.current = setTimeout(() => setServicesDropdown(false), 120);
   }
 
   const pathname = usePathname();
@@ -79,9 +88,8 @@ function Navbar({ isVerified, userName, photoURL }) {
         <div className="flex justify-between items-center py-2 md:py-3">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <CarePathLogo className="h-10 w-auto" />
+            <CarePathLogo className="h-10 w-auto" white={false}/>
           </Link>
-
           {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-8 text-[18px] text-gray-800 font-semibold items-center tracking-wide">
             {navLinks.map(({ label, href }) => (
@@ -96,6 +104,7 @@ function Navbar({ isVerified, userName, photoURL }) {
                 </Link>
               </li>
             ))}
+            {/* Services Desktop Dropdown */}
             <li
               className="relative cursor-pointer"
               onMouseEnter={showServicesDropdown}
@@ -136,41 +145,64 @@ function Navbar({ isVerified, userName, photoURL }) {
                 className="relative"
                 onMouseEnter={showProfileDropdown}
                 onMouseLeave={delayedHideProfileDropdown}
-                tabIndex={0}
+                tabIndex={-1}
                 aria-label="User Menu"
                 style={{ minWidth: 170 }}
               >
-                <button className="flex items-center gap-4 focus:outline-none text-[#1D5C48]" tabIndex={-1}>
+                <button
+                  type="button"
+                  className="flex items-center gap-4 focus:outline-none text-[#1D5C48] px-1 py-1"
+                  onClick={handleProfileTrigger}
+                  onKeyDown={e => handleProfileTrigger(e)}
+                  aria-haspopup="menu"
+                  aria-expanded={profileDropdown}
+                  tabIndex={0}
+                >
                   <UserAvatar name={userName} photoURL={photoURL} />
-                  <span className="text-xl font-bold">{userName}</span>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xl font-bold">{userName}</span>
+                    <HiChevronDown className="ml-1 text-2xl text-gray-500" />
+                  </div>
                 </button>
 
                 {profileDropdown && (
                   <ul
-                    className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 shadow-md rounded-md text-gray-800 text-base z-50 font-normal"
+                    className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 shadow-md rounded-md text-gray-800 text-base z-50 font-normal p-0"
+                    tabIndex={-1}
+                    role="menu"
                     onMouseEnter={showProfileDropdown}
                     onMouseLeave={delayedHideProfileDropdown}
                   >
+                    {/* USER INFO SECTION */}
+                    <li className="px-4 py-3 border-b border-gray-100">
+                      <div className="font-bold text-[17px] truncate">{userName}</div>
+                      <div className="text-gray-500 text-sm truncate">{userMail}</div>
+                    </li>
+
+                    {/* MENU LINKS SECTION */}
                     <li>
-                      <Link href="/Profile" className="block px-4 py-2 hover:bg-gray-100">
+                      <Link href="/Profile" className="block px-4 py-2 hover:bg-gray-100" role="menuitem">
                         My Profile
                       </Link>
                     </li>
                     <li>
-                      <Link href="/Appointments" className="block px-4 py-2 hover:bg-gray-100">
+                      <Link href="/Appointments" className="block px-4 py-2 hover:bg-gray-100" role="menuitem">
                         Appointments
                       </Link>
                     </li>
                     <li>
-                      <Link href="/Messages" className="block px-4 py-2 hover:bg-gray-100">
+                      <Link href="/Messages" className="block px-4 py-2 hover:bg-gray-100" role="menuitem">
                         Messages
                       </Link>
                     </li>
-                    <li>
+
+                    {/* SIGN OUT SECTION */}
+                    <li className="border-t border-gray-100">
                       <form action={handleLogout}>
                         <button
                           type="submit"
                           className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 transition"
+                          role="menuitem"
                         >
                           Sign Out
                         </button>
@@ -178,6 +210,9 @@ function Navbar({ isVerified, userName, photoURL }) {
                     </li>
                   </ul>
                 )}
+
+
+
               </div>
             ) : (
               <>
@@ -207,7 +242,7 @@ function Navbar({ isVerified, userName, photoURL }) {
           </button>
         </div>
 
-        {/* MOBILE SLIDE-IN SIDEBAR */}
+        {/* MOBILE SLIDE-IN SIDEBAR (unchanged) */}
         <div
           className={`
             fixed inset-0 z-[150] transition
@@ -235,7 +270,7 @@ function Navbar({ isVerified, userName, photoURL }) {
             aria-label="Mobile menu"
           >
             <div className="flex items-center justify-between p-4 border-b">
-              <CarePathLogo className="h-9 w-auto" />
+              <CarePathLogo className="h-9 w-auto" white={false}/>
               <button
                 className="text-[#1D5C48] text-2xl"
                 aria-label="Close sidebar menu"
@@ -282,9 +317,12 @@ function Navbar({ isVerified, userName, photoURL }) {
 
             {isVerified ? (
               <div className="border-t px-6 py-3 mt-auto">
-                <div className="flex items-center gap-3 mb-2 text-[#1D5C48] text-base">
+                <div className="flex items-center gap-2 mb-2 text-[#1D5C48] text-base">
                   <UserAvatar name={userName} photoURL={photoURL} />
-                  <span className="font-bold text-lg">{userName}</span>
+                  <div className="px-4 py-3 border-b border-gray-100">
+                      <div className="font-bold text-[17px] truncate">{userName}</div>
+                      <div className="text-gray-500 text-sm truncate">{userMail}</div>
+                  </div>
                 </div>
                 <Link href="/Profile" className="block py-1 hover:text-[#257A5F]" onClick={() => setMenuOpen(false)}>
                   My Profile
@@ -298,7 +336,7 @@ function Navbar({ isVerified, userName, photoURL }) {
                 <form action={handleLogout}>
                   <button
                     type="submit"
-                    className="w-full text-left mt-3 text-red-600 hover:underline text-sm"
+                    className="w-full text-left mt-3 text-red-600 hover:underline text-base"
                   >
                     Sign Out
                   </button>

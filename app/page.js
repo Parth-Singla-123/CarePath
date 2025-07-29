@@ -6,6 +6,8 @@ import Search1 from "@/components/search1";
 import Special from "@/components/special";
 import Content from "@/components/content1";
 import Care from "@/components/care";
+import CareJourney from "@/components/whychooseus";
+import PatientSuccessStories from "@/components/success";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { cookies } from "next/headers";
@@ -19,7 +21,10 @@ async function page() {
             <Search1 />
             <Special />
             <Care />
+            <div className="md:h-[1px] h-[0.5px] hidden md:block bg-gray-200 w-10/12 mx-auto"></div>
             <Content />
+            <div className="md:h-[1px] h-[0.5px] bg-gray-200 w-10/12 mx-auto"></div>
+            <CareJourney />
             
         </div>
     )

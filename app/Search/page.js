@@ -68,7 +68,7 @@ function Disease({ name, type, symptoms, prevention, cure, medicines }) {
           med.trim() !== "" ? (
             <span
               key={i}
-              className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+              className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium text-center"
             >
               {med.trim()}
             </span>
