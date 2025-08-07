@@ -44,6 +44,7 @@ const CarePathLogo = ({ width = 180, height = 50, className, style , white}) => 
         fontSize="50"
         fill="#000000"
         pointerEvents="none"
+        className="pl-2"
       >
         &nbsp;&nbsp;+
       </text>

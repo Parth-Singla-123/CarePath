@@ -71,25 +71,25 @@ function Search1() {
   }, []);
 
   return (
-    <section className="min-h-[50vh] lg:min-h-[60vh] flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 md:px-14 py-8 md:py-12 gap-10 md:gap-12 xl:gap-32 font-sans">
+    <section className="min-h-[50vh] lg:min-h-[60vh] flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 md:px-14 py-8 md:py-12 gap-10 md:gap-12 xl:gap-32">
       {/* Left Content: Headline + Subtext + Icon */}
       <div className="w-full max-w-md md:max-w-lg text-gray-900 space-y-6">
-        <div className="flex items-center space-x-3 text-[#1D5C48]">
+        <div className="flex items-center space-x-3 text-[#005542]">
           <HiSearch className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" aria-hidden="true" />
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-montserrat leading-tight">
             Know the Disease. <br />
             Find the Cure.
           </h1>
         </div>
-        <p className="text-base sm:text-lg text-gray-700">
-          Discover reliable information on thousands of diseases and conditions — empowering your healthcare decisions.
+        <p className="text-base sm:text-lg text-gray-700 font-lato">
+          Discover reliable information on thousands of diseases and conditions empowering your healthcare decisions.
         </p>
 
-        <div className="hidden lg:flex space-x-3 text-xs sm:text-sm text-green-700 font-semibold flex-wrap">
-          <button className="bg-green-100 rounded-full px-3 sm:px-4 py-2 hover:bg-green-200 transition" onClick={() => router.push('/Search?disease=Malaria')}>Malaria</button>
-          <button className="bg-green-100 rounded-full px-3 sm:px-4 py-2 hover:bg-green-200 transition" onClick={() => router.push('/Search?disease=Hypertension (High Blood Pressure)')}>Hypertension</button>
-          <button className="bg-green-100 rounded-full px-3 sm:px-4 py-2 hover:bg-green-200 transition" onClick={() => router.push('/Search?disease=Iron Deficiency Anemia')}>Anemia</button>
-          <button className="bg-green-100 rounded-full px-3 sm:px-4 py-2 hover:bg-green-200 transition" onClick={() => router.push('/Search?disease=Depression (Major Depressive Disorder)')}>Depression</button>
+        <div className="hidden lg:flex space-x-3 text-xs sm:text-sm text-white font-semibold flex-wrap font-lato">
+          <button className="bg-[#005543dd] rounded-full px-3 sm:px-4 py-2 hover:bg-[#257a5fe9] transition" onClick={() => router.push('/Search?disease=Malaria')}>Malaria</button>
+          <button className="bg-[#005543dd] rounded-full px-3 sm:px-4 py-2 hover:bg-[#257a5fe9] transition" onClick={() => router.push('/Search?disease=Hypertension (High Blood Pressure)')}>Hypertension</button>
+          <button className="bg-[#005543dd] rounded-full px-3 sm:px-4 py-2 hover:bg-[#257a5fe9] transition" onClick={() => router.push('/Search?disease=Iron Deficiency Anemia')}>Anemia</button>
+          <button className="bg-[#005543dd] rounded-full px-3 sm:px-4 py-2 hover:bg-[#257a5fe9] transition" onClick={() => router.push('/Search?disease=Depression (Major Depressive Disorder)')}>Depression</button>
         </div>
       </div>
 

@@ -7,6 +7,7 @@ import Special from "@/components/special";
 import Content from "@/components/content1";
 import Care from "@/components/care";
 import CareJourney from "@/components/whychooseus";
+import TopDoctors from "@/components/topdoctors";
 import PatientSuccessStories from "@/components/success";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
@@ -15,10 +16,12 @@ import { decrypt } from "./lib/session";
 
 async function page() {
     return (
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden bg-[#F9F9F9]">
             
             <Homeimage />
             <Search1 />
+            <div className="md:h-[1px] h-[0.5px] bg-gray-200 w-10/12 mx-auto"></div>
+            <TopDoctors />
             <Special />
             <Care />
             <div className="md:h-[1px] h-[0.5px] hidden md:block bg-gray-200 w-10/12 mx-auto"></div>

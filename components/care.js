@@ -38,7 +38,7 @@ function Care() {
                 <h1 className={isChange ? "animate-change1" : "animate-change2"}>{di}</h1>
             </div>
             <div className="flex flex-row place-content-center mt-4">
-                <Link href="#" className="text-sm sm:text-base md:text-lg text-green-800 font-semibold" onMouseOver={handleHover} onMouseLeave={notHandleHover}>
+                <Link href="#" className="text-sm sm:text-base md:text-lg font-lato text-green-800 font-semibold" onMouseOver={handleHover} onMouseLeave={notHandleHover}>
                     Consult doctors for treatment
                 </Link>
                 <span className={`${isHovered ? "translate-x-1" : "-translate-x-1"} transition-all duration-500`}>

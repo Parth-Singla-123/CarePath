@@ -42,13 +42,13 @@ function Special() {
   }
 
   return (
-    <section className="relative py-16 px-4 sm:px-8 md:px-20 bg-green-50 rounded-3xl sm:rounded-[70px]">
+    <section className="relative py-16 px-4 bg-green-50 sm:px-8 md:px-20 rounded-3xl sm:rounded-[70px] font-lato">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row lg:space-x-36 space-y-12 lg:space-y-0">
           {/* Links Section */}
           <div className="w-full lg:w-3/5 flex flex-col my-auto mx-auto space-y-6 text-center lg:text-left">
-            <h5 className="text-base sm:text-xl font-serif font-semibold mb-6 text-teal-700 tracking-wide uppercase">
-              Features Specialities
+            <h5 className="font-montserrat text-base sm:text-xl font-semibold mb-6 text-teal-700 uppercase">
+              How We Can Help You
             </h5>
 
             <nav className="flex flex-col space-y-5">
@@ -59,7 +59,7 @@ function Special() {
                   id={i.toString()}
                   onMouseOver={handleHover}
                   onFocus={handleHover} 
-                  className={`font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold cursor-pointer transition-transform duration-200 ${
+                  className={`text-2xl sm:text-3xl lg:text-4xl font-bold cursor-pointer transition-transform duration-200 ${
                     isMobile
                       ? "text-teal-600 hover:underline hover:decoration-2 hover:decoration-teal-500" // no hover effect on mobile except underline
                       : isHovered[i]
@@ -90,7 +90,7 @@ function Special() {
                   priority
                 />
               </div>
-              <p className="max-w-[340px] text-gray-900 font-medium font-serif text-center lg:text-left text-sm sm:text-base leading-relaxed px-3 sm:px-0">
+              <p className="max-w-[340px] font-lato text-gray-900 font-medium text-center lg:text-left text-sm sm:text-base leading-relaxed px-3 sm:px-0">
                 {data.info}
               </p>
             </div>

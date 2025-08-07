@@ -3,7 +3,7 @@ const data = [
       id: 1,
       title: "Virtual Professionals Consultation",
       img: "/Assets/images/consulation.jpg",
-      info: "Connect with licensed healthcare professionals for secure and personalized virtual consultations accessible anytime, from anywhere."
+      info: "Connect with licensed healthcare professionals for secure, personalized virtual consultations that are accessible anytime, anywhere ensuring quality cares."
     },
     {
       id: 2,
@@ -15,8 +15,8 @@ const data = [
       id: 3,
       title: "E-Prescriptions from Doctors",
       img: "/Assets/images/prescription.webp",
-      info: "Receive valid digital prescriptions from verified practitioners and get your medications delivered promptly and securely without visiting a clinic."
-    },
+      info: "Easily receive valid digital prescriptions from licensed and verified healthcare practitioners, and have your medications delivered quickly and securely to your doorstep."
+    },  
     {
       id: 4,
       title: "Know More about Diseases",

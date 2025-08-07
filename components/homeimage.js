@@ -29,20 +29,20 @@ function Homeimage() {
       <div className="relative z-10 flex flex-col justify-between h-full px-6 md:px-12 pt-[60px] pb-12 text-white">
         {/* Headline & CTA */}
         <div className="mt-auto space-y-4 max-w-3xl">
-          <h1 className="text-3xl md:text-5xl lg:text-[44px] leading-tight font-bold text-[#F9FAFB] drop-shadow">
+          <h1 className="text-[28px] md:text-5xl lg:text-[44px] leading-tight font-bold text-[#F9FAFB] drop-shadow">
             Empowering Health Through
             <br className="hidden md:block" />
-            <span className="text-[#C1E1C1]">Technology</span>
+            <span className="text-[#C1E1C1]"> Technology</span>
           </h1>
 
           <div
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            className="flex items-center space-x-2 group"
+            className="flex items-center space-x-1 group"
           >
             <Link
-              href="#"
-              className="text-lg md:text-xl font-medium text-white hover:text-[#C2F0D3] group-hover:underline transition"
+              href="/About"
+              className="text-lg md:text-xl font-medium font-lora text-white hover:text-[#C2F0D3] group-hover:underline transition"
             >
               Learn how we drive innovation
             </Link>
@@ -52,7 +52,7 @@ function Homeimage() {
               }`}
             >
               <GoChevronRight
-                className="text-lg md:text-xl mt-1.5 text-[#C2F0D3]"
+                className="text-lg md:text-xl mt-1.5 text-white hover:text-[#C2F0D3]"
               />
             </span>
           </div>
@@ -61,7 +61,7 @@ function Homeimage() {
         {/* Bottom CTA */}
         <div className="pt-6">
           <Link
-            href="#"
+            href="/Consult"
             className="inline-block border-2 border-green-50 text-green-50 text-lg md:text-xl font-semibold py-2 px-6 rounded-full hover:bg-[#257A5F] transition duration-200 shadow"
           >
             Request Appointment

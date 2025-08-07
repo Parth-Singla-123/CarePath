@@ -71,7 +71,7 @@ function Navbar({ isVerified, userName, photoURL, userMail }) {
   const services = [
     { label: 'Know about Diseases', href: '/Search' },
     { label: 'Diagnostics', href: '/services/diagnostics' },
-    { label: 'Consultation', href: '/services/consultation' },
+    { label: 'Consultation', href: '/Consult' },
     { label: 'Therapy & Wellness', href: '/services/therapy' },
     { label: 'Telemedicine', href: '/services/telemedicine' },
   ];
@@ -83,9 +83,9 @@ function Navbar({ isVerified, userName, photoURL, userMail }) {
   }, [menuOpen]);
 
   return (
-    <nav className="bg-gray-100 border-b border-gray-200 shadow-sm sticky top-0 z-50 font-serif">
+    <nav className="bg-gray-100 border-b border-gray-200 shadow-sm sticky top-0 z-50 font-lato">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-16">
-        <div className="flex justify-between items-center py-2 md:py-3">
+        <div className="flex justify-between items-center py-2 md:py-[10px]">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <CarePathLogo className="h-10 w-auto" white={false}/>

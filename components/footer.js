@@ -7,16 +7,16 @@ import CarePathLogo from "@/public/Assets/images/CarePathLogo";
 const Footer = () => {
   return (
     <footer className="bg-green-800 text-green-100 pt-10 pb-6 px-6 sm:px-10 md:px-16 font-sans select-none">
-      <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-12 md:gap-0">
+      <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-10 md:gap-0">
         {/* Left Info Section */}
-        <div className="flex flex-col gap-6 md:max-w-xs">
-          <p className="text-sm text-green-300 font-medium leading-relaxed max-w-xs">
+        <div className="flex flex-col gap-6 md:max-w-sm">
+          <p className="text-base text-green-300 font-medium leading-relaxed">
             Your one-stop destination for health and wellness.
           </p>
 
-          <div className="flex gap-12 text-sm font-medium">
+          <div className="flex gap-12 text-base font-medium">
             {/* Services */}
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-[6px]">
               <h2 className="font-serif text-lg text-green-200 tracking-wide uppercase">Services</h2>
               <Link href="#" className="hover:underline text-green-300 transition-colors duration-200">
                 Consultation
@@ -30,7 +30,7 @@ const Footer = () => {
             </div>
 
             {/* Contact */}
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-[6px]">
               <h2 className="font-serif text-lg text-green-200 tracking-wide uppercase">Contact</h2>
               <Link href="#" className="hover:underline text-green-300 transition-colors duration-200">
                 Home

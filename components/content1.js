@@ -26,10 +26,10 @@ const HealingCareSection = () => {
           </div>
           {/* Info Block */}
           <div className="order-2 md:order-1 px-4 sm:px-10 lg:px-16 mx-auto w-full max-w-2xl mt-8 md:mt-0">
-            <h2 className="text-3xl sm:text-4xl md:text-3xl lg:text-4xl font-extrabold text-black mb-5 sm:mb-6 leading-tight">
+            <h2 className="font-montserrat text-[28px] sm:text-3xl md:text-2xl lg:text-3xl font-bold text-black mb-5 sm:mb-6 leading-tight">
               Healing starts here
             </h2>
-            <div className="space-y-6 text-base sm:text-lg md:text-lg text-gray-700">
+            <div className="space-y-6 text-base sm:text-sm md:text-base text-gray-700 font-lora">
               <div>
                 <h3 className="text-base sm:text-xl md:text-xl font-semibold text-black mb-2">
                   The right answers the first time
@@ -70,11 +70,11 @@ const HealingCareSection = () => {
             />
           </div>
           {/* Right Info Block */}
-          <div className="px-4 sm:px-10 md:px-16 max-w-2xl mx-auto mt-8 md:mt-0 w-full">
-            <h2 className="text-3xl sm:text-4xl md:text-3xl lg:text-4xl font-extrabold text-black mb-5 sm:mb-6 leading-tight">
+          <div className="px-4 sm:px-10 md:px-16 max-w-2xl mx-auto mt-8 md:mt-0 w-full font-lora">
+            <h2 className="font-montserrat text-[28px] sm:text-3xl md:text-2xl lg:text-3xl font-bold text-black mb-5 sm:mb-6 leading-tight">
               World-class care for global patients
             </h2>
-            <p className="text-base sm:text-lg md:text-lg text-gray-700 mb-8 max-w-xl">
+            <p className="text-base sm:text-sm md:text-base text-gray-700 mb-8 max-w-xl">
               We make it easy for patients from around the world to get care from Carepath Clinic.
             </p>
             <button className="px-6 py-2 border-2 border-green-800 text-green-900 rounded-full hover:text-green-700 hover:underline transition-all duration-300 font-medium text-base sm:text-lg md:text-lg">

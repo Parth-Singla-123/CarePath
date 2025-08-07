@@ -51,13 +51,13 @@ const stepVariants = {
 
 export default function CareJourney() {
   return (
-    <section className="py-8 md:py-16 px-1 md:px-4 sm:px-10 max-w-7xl mx-auto font-serif text-gray-900">
+    <section className="pt-8 pb-10 md:py-16 px-1 md:px-4 sm:px-10 max-w-7xl mx-auto font-serif text-gray-900">
       {/* Header */}
-      <div className="max-w-3xl mx-auto text-center mb-16 px-4 sm:px-0">
+      <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16 px-4 sm:px-0">
         <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-[#1D5C48]">
           Your Care Journey
         </h2>
-        <p className="text-lg text-gray-700 max-w-xl mx-auto leading-relaxed">
+        <p className="text-base md:text-lg text-gray-700 max-w-xl mx-auto leading-relaxed">
           Understand what to expect every step of the way, from booking to recovery.
           We make healthcare simple, guided, and supportive.
         </p>
@@ -89,7 +89,7 @@ export default function CareJourney() {
             variants={stepVariants}
           >
             <div className="flex flex-col items-center relative z-10 md:mb-4">
-              <div className="bg-[#1D5C48] rounded-full p-3 shadow-lg w-16 h-16 flex items-center justify-center text-white">
+              <div className="bg-[#1D5C48] rounded-full p-3 shadow-lg w-12 h-12 md:w-16 md:h-16 flex items-center justify-center text-white">
                 {icon}
               </div>  
               {/* Connector dot - only visible on desktop */}
@@ -101,8 +101,8 @@ export default function CareJourney() {
               />
             </div>
             <div className="flex flex-col space-y-2 w-full max-w-[20rem] md:max-w-[26rem] mx-auto">
-              <h3 className="font-semibold text-xl text-[#1D5C48]">{title}</h3>
-              <p className="text-gray-700 leading-relaxed">{description}</p>
+              <h3 className="font-semibold text-lg md:text-xl text-[#1D5C48]">{title}</h3>
+              <p className="text-gray-700 text-sm md:text-base leading-relaxed">{description}</p>
             </div>
           </motion.div>
         ))}

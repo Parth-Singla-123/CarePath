@@ -13,6 +13,9 @@ module.exports = {
         sans: ['var(--font-sans)', 'Inter', 'sans-serif'],
         serif: ['var(--font-lora)', 'Lora', 'serif'],
         brand: ['var(--font-alegreya)', 'Alegreya', 'serif'],
+        lora: ['var(--font-lora)', 'serif'],
+        lato: ['var(--font-lato)', 'sans-serif'],
+        montserrat: ['var(--font-montserrat)', 'sans-serif'],
       },
       colors: {
         background: "var(--background)",
