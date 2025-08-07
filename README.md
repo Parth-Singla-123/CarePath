@@ -1,112 +1,113 @@
-CarePath: A Modern Healthcare Web Platform
-🌟 Project Overview
-CarePath is a full-stack, role-based healthcare application connecting patients with verified medical professionals. The platform's core purpose is to provide a searchable disease database and a streamlined appointment booking system. Built with a focus on modern development practices, it offers a highly responsive and user-friendly experience.
+# CarePath: A Modern Healthcare Web Platform
 
-👩‍⚕️ Key Features & Roles
-The application's design is centered on a robust role-based system, offering distinct functionalities for both users and doctors.
 
-User Portal
-Secure Authentication: Uses NextAuth for secure, persistent user sessions via cookies and JWT.
 
-Searchable Disease Database: An extensive database allows users to search for diseases and get detailed information on symptoms and treatments.
+## 🌟 Project Overview
 
-Verified Doctor Directory: Users can browse verified doctors, filter by specialty, and view ratings to make an informed choice.
+CarePath is a comprehensive, full-stack healthcare web application designed to create a bridge between patients and verified medical professionals. The platform's core mission is to democratize health knowledge and simplify the process of finding and consulting with doctors. By offering a powerful, searchable disease database and a streamlined appointment booking system, CarePath provides an intuitive and trustworthy experience. The application is built with a strong focus on modern web development practices, ensuring a highly responsive design and a seamless, user-centric experience across all devices. This project serves as a showcase of proficiency in a full-stack, in-demand technology stack, from secure authentication to robust data management.
 
-Appointment Management: Request and view appointments with doctors in real-time through a simple and efficient system.
+---
 
-Doctor Portal
-Profile Management: Doctors can manage their personal details, specialties, and availability.
+## 👩‍⚕️ Key Features & Roles
 
-Freelance Opportunity: The platform enables doctors to freelance and connect with a wider patient base.
+The application's architecture is centered around a robust role-based system, which provides distinct and tailored functionalities for both users (patients) and doctors.
 
-Verification Process: Doctors must upload their degree and profile for verification to ensure authenticity and patient safety.
+### User Portal
 
-Appointment Dashboard: A dedicated dashboard helps doctors efficiently view and manage all scheduled appointments.
+* **Secure Authentication:** User authentication is handled by **NextAuth**, which provides a secure and flexible solution. Sessions are managed through session cookies and JSON Web Tokens (JWT), guaranteeing a persistent and encrypted session that protects user data and ensures a frictionless login experience.
+* **Searchable Disease Database:** An extensive, user-friendly database allows individuals to search for and explore a wide range of diseases. Each entry provides detailed information on symptoms, potential causes, and common treatment options, empowering users with reliable health information.
+* **Verified Doctor Directory:** Users can browse a carefully curated list of verified doctors. The powerful filtering system allows them to narrow their search by specific medical specialties, while a clear rating system and detailed profiles enable them to make a confident and informed decision.
+* **Appointment Management:** The platform offers an intuitive appointment request system. Users can select a suitable date and time from a doctor's availability, and the request is reflected immediately on both the patient and doctor portals, facilitating a transparent and efficient booking process.
 
-💻 Tech Stack
-This project is built using a modern and scalable tech stack.
+### Doctor Portal
 
-Frontend
-Technology
+* **Profile Management:** Doctors have access to a dedicated profile where they can input and update their personal details, list their specialties, and manage their working hours and availability. This provides patients with a comprehensive view of their qualifications and services.
+* **Freelance Opportunity:** CarePath empowers doctors to work as freelancers, expanding their professional reach and connecting them with a broader patient base without the constraints of a traditional clinic.
+* **Verification Process:** To ensure patient safety and build a foundation of trust, all doctors undergo a rigorous verification process. They are required to upload a digital copy of their professional degree and a comprehensive profile for an administrative review before their public listing is approved.
+* **Appointment Dashboard:** Doctors are provided with a clear and intuitive dashboard to view and manage all their scheduled appointments. This centralized portal helps them organize their schedule efficiently, track patient requests, and prepare for upcoming consultations.
 
-Description
+---
 
-Next.js
+## 💻 Tech Stack
 
-A React framework for building fast, server-side rendered, and responsive web applications.
+This project is built upon a modern and scalable tech stack, demonstrating an understanding of full-stack development.
 
-React.js
+### Frontend
 
-The core library used for building a dynamic and component-based user interface.
+| Technology | Description |
+| :--- | :--- |
+| **Next.js** | Used as the foundation for the front-end, Next.js provides server-side rendering and static site generation capabilities. This ensures optimal performance, fast page loads, and excellent SEO, which is crucial for a public-facing health platform. |
+| **React.js** | The core library for building the dynamic and component-based user interface. Its declarative nature and state management capabilities make it ideal for creating interactive and complex UIs like the appointment calendar and doctor profiles. |
+| **Tailwind CSS** | A utility-first CSS framework that enabled the rapid development of a custom, modern, and fully responsive user interface. Its extensive class-based system ensures a consistent look and feel across the application and simplifies the process of making it look great on all screen sizes. |
 
-Tailwind CSS
+### Backend
 
-A utility-first CSS framework for rapid and efficient responsive UI development.
+| Technology | Description |
+| :--- | :--- |
+| **Supabase** | An open-source backend-as-a-service solution that provides the database, authentication, and API layer. This allowed for a streamlined development process without the need to set up a separate backend server. |
+| **PostgreSQL** | The robust relational database system powering Supabase, used to store and manage all application data. Its reliability and structured nature are perfect for handling critical data like user profiles, doctor credentials, and appointment schedules. |
+| **Cloudinary** | A cloud-based service for hosting and managing all image assets, such as doctor degrees and profile pictures. Cloudinary's powerful features automatically optimize images for web delivery, improving performance and reducing bandwidth usage. |
 
-Backend
-Technology
+---
 
-Description
+## 🚀 Getting Started
 
-Supabase
+To get a local copy of this project up and running, follow these steps.
 
-An open-source backend-as-a-service providing a database, authentication, and API layer.
+### Prerequisites
 
-PostgreSQL
+* `npm` or `yarn` installed
+* Node.js (LTS version recommended)
 
-The robust relational database system used for storing all application data.
+### Installation
 
-Cloudinary
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Parth-Singla-123/CarePath](https://github.com/Parth-Singla-123/CarePath)
+    cd carepath
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Set up environment variables:**
+    * Create a `.env.local` file in the root directory.
+    * Add your Supabase and Cloudinary credentials. The required keys are:
+        ```env
+        NEXT_PUBLIC_SUPABASE_URL=...
+        NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+        NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=...
+        NEXTAUTH_SECRET=...
+        ```
+    * Refer to the Supabase and Cloudinary documentation to obtain these values.
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-A cloud-based service for hosting and optimizing all image assets.
+---
 
-🚀 Getting Started
-Follow these steps to get a local copy of the project running.
+## 🤝 Contributing
 
-Prerequisites
-npm or yarn
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/your-username/carepath/issues).
 
-Node.js (LTS version)
+1.  Fork the Project.
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the Branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
 
-Installation
-Clone the repository:
+---
 
-git clone https://github.com/your-username/carepath.git
-cd carepath
+## 📄 License
 
-Install dependencies:
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-npm install
+---
 
-Set up environment variables:
+## 📞 Contact
 
-Create a .env.local file.
+**Your Name** - [parth.singla.ug23@nsut.ac.in](mailto:parth.singla.ug23@nsut.ac.in)
 
-Add your Supabase and Cloudinary credentials.
-
-Run the development server:
-
-npm run dev
-
-Open http://localhost:3000 to view the application.
-
-🤝 Contributing
-Contributions, issues, and feature requests are welcome!
-
-Fork the project.
-
-Create your Feature Branch (git checkout -b feature/AmazingFeature).
-
-Commit your Changes (git commit -m 'Add some AmazingFeature').
-
-Push to the Branch (git push origin feature/AmazingFeature).
-
-Open a Pull Request.
-
-📄 License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-📞 Contact
-Your Name - your-email@example.com
-
-Project Link: https://github.com/your-username/carepath
+Project Link: [https://care-path-phi.vercel.app](https://care-path-phi.vercel.app)
