@@ -1,4 +1,4 @@
-import cloudinary from "@/lib/cloudinary";
+import cloudinary from "@/app/lib/cloudinary"
 
 export const runtime = "nodejs"; // important for cloudinary
 
