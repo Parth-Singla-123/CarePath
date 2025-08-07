@@ -1,13 +1,13 @@
 import cloudinary from "@/app/lib/cloudinary"
 
-export const runtime = "nodejs"; // important for cloudinary
+export const runtime = "nodejs"; 
 
 export async function POST(req) {
   try {
     const { file, folderName } = await req.json();
 
     const uploadResponse = await cloudinary.uploader.upload(file, {
-      folder: folderName, // e.g. records/userId or records/recordId
+      folder: folderName, 
       resource_type: "image",
     });
 
