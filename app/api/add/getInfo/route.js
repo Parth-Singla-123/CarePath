@@ -2,9 +2,10 @@ export const revalidate = 60;
 export const runtime = 'edge';
 
 import { NextResponse } from "next/server";
-import { supabase } from "@/app/lib/supabase";
+import { createSupabaseBrowserClient } from '@/app/lib/supabase/client';
 
 export async function POST(request) {
+    const supabase = createSupabaseBrowserClient();
     try {
         const { disease_name } = await request.json();
         console.log("Received disease_name in API:", disease_name);

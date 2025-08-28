@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import { useDoctor } from "@/app/actions/useDoctor";
+import { useDoctor } from "@/app/hooks/useDoctor";
 import Link from "next/link";
 import Image from "next/image";
 

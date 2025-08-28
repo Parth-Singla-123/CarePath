@@ -2,13 +2,15 @@ export const revalidate = 60;
 export const runtime = 'edge';
 
 import { NextResponse } from "next/server";
-import { supabase } from "@/app/lib/supabase";
+import { createSupabaseBrowserClient } from '@/app/lib/supabase/client';
 
 /**
  * @param {Request} request
  * @param {{ params: { id: uuid } }} context
  */
 export async function GET(request, { params }) {
+
+  const supabase = createSupabaseBrowserClient();
   try {
     const { id } = params;
 

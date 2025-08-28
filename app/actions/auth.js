@@ -1,118 +1,108 @@
-"use server"
-import { SignupFormSchema } from "../lib/definations";
-import { LoginFormSchema } from "../lib/definations";
-import { createSession } from "../lib/session";
-import { NextResponse } from "next/server";
-import { permanentRedirect } from "next/navigation";
-import { deleteSession } from "@/app/lib/session";
-import { redirect } from "next/navigation";
+"use server";
 
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { createSupabaseServerClient } from "@/app/lib/supabase/server";
+import { SignupFormSchema } from "@/app/lib/definations"; // Make sure to import your Zod schema
+import { LoginFormSchema } from "@/app/lib/definations";
 
 export async function signup(state, formData) {
-  // Validate form fields
+  // 1. Validate form fields with Zod
   const validatedFields = SignupFormSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     password: formData.get("password"),
   });
 
-  // If any form fields are invalid, return early
+  // If any form fields are invalid, return the errors to the form
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      usererror:"",
+      usererror: null, // Ensure usererror is null when there are field errors
     };
   }
 
-  // Call the provider or db to create a user...
+  // 2. Get the validated data and the role
   const { name, email, password } = validatedFields.data;
-  var result={};
-  
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/register`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name,email,password }),
-      }
-    );
+  const role = formData.get("role"); // 'patient' or 'doctor' from your new radio buttons
 
-    result = await response.json();
-    console.log(result);
+  if (!role) {
+    return { errors: {}, usererror: "Please select a role (Patient or Doctor)." };
+  }
 
-  } catch(error) {
-    console.log("Error registering user", error);
-  }
-  if(result.success) {
-    const user = {id:result.data.id,name:result.data.name, email:email}
-    await createSession(user);
-    permanentRedirect(`/`);
-  }
-  else {
-    return { 
-      usererror : result.message,
-      error:{}, 
+  const supabase = createSupabaseServerClient();
+
+  // 3. Call Supabase Auth to sign up the user
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        full_name: name,
+        role: role,
+      },
+    },
+  });
+
+
+  // 4. Handle Supabase-specific errors (like "User already exists")
+  if (error) {
+    console.error("Supabase signup error:", error.message);
+    return {
+      errors: {},
+      usererror: error.message, // This will be displayed in your "usererror" div
     };
   }
+
+  redirect("/"); 
 }
 
 
 
 
-
-
-export async function login(state,formData) {
-
+export async function login(state, formData) {
+  // 1. Validate form fields with Zod
   const validatedFields = LoginFormSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
 
+  // If fields are invalid, return errors to the form immediately
   if (!validatedFields.success) {
     return {
-      usererror:"",
       errors: validatedFields.error.flatten().fieldErrors,
+      usererror: null,
     };
   }
 
+  // 2. Get the validated data
   const { email, password } = validatedFields.data;
-  var result={}
-  try{
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email,password }),
-      }
-    );
-    result = await response.json();
-    console.log(result);
+  const supabase = createSupabaseServerClient();
+
+  // 3. Call Supabase Auth to sign in the user
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  // 4. Handle authentication errors from Supabase (e.g., "Invalid login credentials")
+  if (error) {
+    console.error("Supabase login error:", error.message);
+    return {
+      errors: {},
+      usererror: "Invalid login credentials. Please check your email and password.",
+    };
   }
-  catch(error){
-    console.log("error registering user",error);
-  }
-  if(result.success) {
-    const user = {id:result.data.id , name:result.data.name, email: email}
-    await createSession(user);
-    permanentRedirect(`/`);
-  }
-  else return { 
-    usererror : result.message,
-    error:{},
-  };
+  
+  // 5. Success: Revalidate and redirect
+  redirect("/");
 }
+
+
 
 
 export async function handleLogout() {
-  await deleteSession();
-  redirect('/Login');
+  const supabase = createSupabaseServerClient();
+  await supabase.auth.signOut();
+  redirect("/Login");
 }
-
-
-

@@ -2,11 +2,12 @@ export const revalidate = 60;
 export const runtime = 'edge';
 
 import { NextResponse } from "next/server";
-import { supabase } from "@/app/lib/supabase";
+import { createSupabaseBrowserClient } from '@/app/lib/supabase/client';
 
 export async function GET() {
-  try {
 
+  const supabase = createSupabaseBrowserClient();
+  try {
     const { data, error } = await supabase
       .from("doctors")
       .select("id, doctor_name, profile_photo_url, specialties, average_rating, rating_count");

@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "./navbar";
-import { userVerification } from "@/app/lib/session";
+import { getFullUserProfile } from '@/app/lib/user';
 
 export default async function nav() {
-    const userDetails = userVerification();
+    const user = await getFullUserProfile();
     return (
         <div>
-            <Navbar isVerified={(await userDetails).verification} userName={(await userDetails).user.name} userMail={(await userDetails).user.email}/>
+            <Navbar user = {user} />
         </div>
     )
 }

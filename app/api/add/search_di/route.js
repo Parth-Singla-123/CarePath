@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/app/lib/supabase";
+import { createSupabaseBrowserClient } from '@/app/lib/supabase/client';
 
 export const revalidate = 3600;
 export const runtime = "edge"; // optional
 
 export async function GET() {
+  const supabase = createSupabaseBrowserClient();
   try {
     const { data, error } = await supabase
       .from("diseases")

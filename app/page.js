@@ -11,12 +11,11 @@ import TopDoctors from "@/components/topdoctors";
 import PatientSuccessStories from "@/components/success";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import { cookies } from "next/headers";
-import { decrypt } from "./lib/session";
+
 
 async function page() {
     return (
-        <div className="overflow-x-hidden bg-[#F9F9F9]">
+        <div className="bg-[#F9F9F9]">
             
             <Homeimage />
             <Search1 />
