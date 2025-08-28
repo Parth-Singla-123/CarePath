@@ -82,7 +82,7 @@ export default function OverviewPage() {
     <div className="space-y-8">
        <div>
           <h1 className="text-4xl font-bold text-slate-800">Dashboard, {user.doctor_name}</h1>
-          <p className="mt-2 text-lg text-slate-500">Heres your summary for today, August 17th, 2025.</p>
+          <p className="mt-2 text-lg text-slate-500">Here is your summary for today, August 17th, 2025.</p>
         </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <StatCard title="Today's Appointments" value="12" icon={HiOutlineClock} iconBgColor="bg-blue-100" iconColor="text-blue-600" />
