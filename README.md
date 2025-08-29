@@ -28,6 +28,77 @@ The application's architecture is centered around a robust role-based system, wh
 
 ---
 
+## Project Structure
+
+```
+CarePath/
+├── .eslintrc.json
+├── .gitignore
+├── README.md
+├── app/
+│   ├── About/
+│   │   └── page.js
+│   ├── Consult/
+│   │   └── page.js
+│   ├── Contact/
+│   │   └── page.jsx
+│   ├── Doctors/
+│   │   ├── [id]/
+│   │   │   └── page.js
+│   ├── Login/
+│   │   └── page.js
+│   ├── Search/
+│   │   └── page.js
+│   ├── Signup/
+│   │   └── page.js
+│   ├── actions/
+│   │   ├── auth.js
+│   │   └── profile.js
+│   ├── api/
+│   │   ├── add/
+│   │   │   ├── getInfo/
+│   │   │   │   └── route.js
+│   │   │   └── search_di/
+│   │   │       └── route.js
+│   │   ├── doctor/
+│   │   │   ├── [id]/
+│   │   │   │   └── route.js
+│   │   │   └── all/
+│   │   │       └── route.js
+│   │   └── upload/
+│   │       └── route.js
+│   ├── globals.css
+│   ├── hooks/
+│   │   ├── useDoctor.js
+│   │   └── useUser.js
+│   ├── layout.js
+│   ├── lib/
+│   │   ├── cloudinary.js
+│   │   ├── definations.js
+│   │   ├── supabase/
+│   │   │   ├── client.js
+│   │   │   └── server.js
+│   │   └── user.js
+│   ├── page.js
+│   └── profile/
+│       ├── layout.js
+│       ├── page.js
+│       └── settings/
+│           └── page.js
+│
+├── components/
+│   ├── care.js
+│   ├── content1.js
+│   ├── footer.js
+│   ├── header.jsx
+│   ├── homeimage.js
+│   └── (other UI components…)
+│
+└── vercel.json
+```
+
+---
+
 ## 💻 Tech Stack
 
 This project is built upon a modern and scalable tech stack, demonstrating an understanding of full-stack development.
